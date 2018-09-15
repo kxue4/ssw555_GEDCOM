@@ -97,7 +97,7 @@ def parse_gedcom(validated):
             indi_date_type = tag
 
         elif level == '2' and tag == 'DATE' and indi_date_type != 'NONE':
-            indi_list[indi_index][indi_date_type] = arg
+            indi_list[indi_index][indi_date_type] = datetime.strptime(arg, '%d %b %Y').strftime('%Y-%m-%d')
             indi_date_type = 'NONE'
 
         elif level == '1' and tag == 'FAMS':
@@ -116,20 +116,20 @@ def parse_gedcom(validated):
             fam_date_type = tag
 
         elif level == '2' and tag == 'DATE' and fam_date_type != 'NONE':
-            fam_list[fam_index][fam_date_type] = arg
+            fam_list[fam_index][fam_date_type] = datetime.strptime(arg, '%d %b %Y').strftime('%Y-%m-%d')
             fam_date_type = 'NONE'
 
     for people in indi_list:
 
         if 'DEAT' in people:
             people['ALIVE'] = 'False'
-            people['AGE'] = datetime.strptime(people['DEAT'], '%d %b %Y').year \
-                            - datetime.strptime(people['BIRT'], '%d %b %Y').year
+            people['AGE'] = datetime.strptime(people['DEAT'], '%Y-%m-%d').year \
+                            - datetime.strptime(people['BIRT'], '%Y-%m-%d').year
 
         if 'DEAT' not in people:
             people['DEAT'] = 'NA'
             people['ALIVE'] = 'True'
-            people['AGE'] = datetime.now().year - datetime.strptime(people['BIRT'], '%d %b %Y').year
+            people['AGE'] = datetime.now().year - datetime.strptime(people['BIRT'], '%Y-%m-%d').year
 
         if 'SPOUSE' in people:
 
