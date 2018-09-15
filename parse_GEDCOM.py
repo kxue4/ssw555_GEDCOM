@@ -6,9 +6,15 @@
 # @Software: PyCharm
 from prettytable import PrettyTable
 from datetime import datetime
+import re
 
 
 def validate_gedcom(file_name):
+    """
+    Validate the levels and tags from original GEDCOM file.
+    :param validated: file_name
+    :return: a validated list.  e.g.[('1', 'NAME', 'Kaiwen Xue'), ('1', 'SEX', 'M')]
+    """
     valid_dict = {'0': {'HEAD', 'TRLR', 'NOTE', 'INDI', 'FAM'},
                   '1': {'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS', 'MARR', 'HUSB', 'WIFE', 'CHIL', 'DIV'},
                   '2': {'DATE'}}
@@ -47,11 +53,24 @@ def validate_gedcom(file_name):
 
 
 def parse_gedcom(validated):
-    indi_list = [] # ID, Name, Gender, Birthday, Age, Alive, Death, Child, Spouse
+    """
+    Parse validated list and return indi_list and fam_list
+    :param validated: the result of validate_gedcom()
+    :return: indi_list, fam_list
+            e.g. indi_list = [{'INDI': '@I1@', 'NAME': 'Kaiwen /Xue/', 'SEX': 'M', 'BIRT': '15 AUG 1994', 'DEAT': 'NA',
+            'ALIVE': 'True', 'AGE': 24, 'SPOUSE': 'NONE', 'CHIL': 'NONE'}, {'INDI': '@I2@', 'NAME': 'Mingxuan /Xue/',
+            'SEX': 'M', 'BIRT': '3 NOV 1963', 'SPOUSE': ['@F1@'], 'DEAT': 'NA', 'ALIVE': 'True', 'AGE': 55, 'CHIL': ['@I1@']}]
+            fam_list = [{'FAM': '@F1@', 'HUSB': '@I2@', 'WIFE': '@I3@', 'CHIL': ['@I1@'], 'MARR': '12 SEP 1990',
+            'HUSB_NAME': 'Mingxuan /Xue/', 'WIFE_NAME': 'Huifang /Li/', 'DIV': 'NONE'}, {'FAM': '@F2@', 'HUSB': '@I4@',
+            'WIFE': '@I5@', 'CHIL': ['@I2@', '@I6@'], 'MARR': '16 OCT 1959', 'HUSB_NAME': 'Zhishan /Xue/', 'WIFE_NAME':
+            'Xiuzhen /Mei/', 'DIV': 'NONE'}]
+    """
+    indi_list = []
     indi_index = -1
     fam_list = []
     fam_index = -1
-    type_of_date = 0
+    indi_date_type = 'NONE'
+    fam_date_type = 'NONE'
 
     for token in validated: # token = (level, tag, arg)
         level = token[0]
@@ -63,6 +82,11 @@ def parse_gedcom(validated):
             indi_list.append({})
             indi_list[indi_index][tag] = arg
 
+        elif level == '0' and tag == 'FAM':
+            fam_index += 1
+            fam_list.append({})
+            fam_list[fam_index][tag] = arg
+
         elif level == '1' and tag == 'NAME':
             indi_list[indi_index][tag] = arg
 
@@ -70,24 +94,63 @@ def parse_gedcom(validated):
             indi_list[indi_index][tag] = arg
 
         elif level == '1' and tag in ('BIRT', 'DEAT'):
-            type_of_date = tag
+            indi_date_type = tag
 
-        elif level == '2' and tag == 'DATE' and type_of_date != 0:
-            indi_list[indi_index][type_of_date] = arg
-            type_of_date = 0
+        elif level == '2' and tag == 'DATE' and indi_date_type != 'NONE':
+            indi_list[indi_index][indi_date_type] = arg
+            indi_date_type = 'NONE'
+
+        elif level == '1' and tag == 'FAMS':
+            indi_list[indi_index].setdefault('SPOUSE', []).append(arg)
+
+        elif level == '1' and tag == 'HUSB':
+            fam_list[fam_index][tag] = arg
+
+        elif level == '1' and tag == 'WIFE':
+            fam_list[fam_index][tag] = arg
+
+        elif level == '1' and tag == 'CHIL':
+            fam_list[fam_index].setdefault('CHIL', []).append(arg)
+
+        elif level == '1' and tag in ('MARR', 'DIV'):
+            fam_date_type = tag
+
+        elif level == '2' and tag == 'DATE' and fam_date_type != 'NONE':
+            fam_list[fam_index][fam_date_type] = arg
+            fam_date_type = 'NONE'
 
     for people in indi_list:
 
         if 'DEAT' in people:
-            people['Alive'] = 'False'
-            people['Age'] = datetime.strptime(people['DEAT'], '%d %b %Y').year \
+            people['ALIVE'] = 'False'
+            people['AGE'] = datetime.strptime(people['DEAT'], '%d %b %Y').year \
                             - datetime.strptime(people['BIRT'], '%d %b %Y').year
-        else:
-            people['DEAT'] = 'NA'
-            people['Alive'] = 'True'
-            people['Age'] = datetime.now().year - datetime.strptime(people['BIRT'], '%d %b %Y').year
 
-    return indi_list
+        if 'DEAT' not in people:
+            people['DEAT'] = 'NA'
+            people['ALIVE'] = 'True'
+            people['AGE'] = datetime.now().year - datetime.strptime(people['BIRT'], '%d %b %Y').year
+
+        if 'SPOUSE' in people:
+
+            for spouses in people['SPOUSE']:
+                find_fam_index = int(re.sub('\D', '', spouses)) - 1
+                people['CHIL'] = fam_list[find_fam_index]['CHIL']
+
+        if 'SPOUSE' not in people:
+            people['SPOUSE'] = 'NONE'
+            people['CHIL'] = 'NONE'
+
+    for families in fam_list:
+        find_husb_index = int(re.sub('\D', '', families['HUSB'])) - 1
+        find_wife_index = int(re.sub('\D', '', families['WIFE'])) - 1
+        families['HUSB_NAME'] = indi_list[find_husb_index]['NAME']
+        families['WIFE_NAME'] = indi_list[find_wife_index]['NAME']
+
+        if 'DIV' not in families:
+            families['DIV'] = 'NONE'
+
+    return indi_list, fam_list
 
 
 def pretty_table():
@@ -95,12 +158,9 @@ def pretty_table():
 
 
 def main():
-    a = parse_gedcom(validate_gedcom('my_test.ged'))
-    print(a)
-
-    # for i in a:
-    #     if 'DEAT' in i:
-    #         print(i)
+    result = parse_gedcom(validate_gedcom('my_test.ged'))
+    print(result[0])
+    print(result[1])
 
 
 if __name__ == '__main__':
