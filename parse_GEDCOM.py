@@ -4,10 +4,13 @@
 # @Author  : Kaiwen Xue
 # @File    : parse_GEDCOM.py
 # @Software: PyCharm
+
 from prettytable import PrettyTable
 from datetime import datetime
 import re
-
+import sys
+#print_GEDCOM = sys.path.append('../')
+#import print_GEDCOM
 
 def validate_gedcom(file_name):
     """
@@ -153,14 +156,43 @@ def parse_gedcom(validated):
     return indi_list, fam_list
 
 
-def pretty_table():
+def pretty_table(a,b):
+    print("Individuals")
+    lista=[]
+    listb=[]
+    x = PrettyTable(field_names=["ID", "Name", "Gender", "Birthday","Age","Alive","Death","Child","Spouse"])
+    y = PrettyTable(field_names=["ID", "Married", "Divorced", "Husband ID","Husband Name","Wife ID","Wife Name","Children"])
+    y.align["name"] = "1"
+    y.padding_width = 1
+    x.align["name"] = "l"  # 以name字段左对齐
+    x.padding_width = 1   # 填充宽度
+    i=0
+    j=0
+    while i< len(a):
+        lista=[a[i]['INDI'],a[i]['NAME'],a[i]['SEX'],a[i]['BIRT'],a[i]['AGE'],a[i]['ALIVE'],a[i]['DEAT'],a[i]['CHIL'],a[i]['SPOUSE']];
+        x.add_row(lista)    #x.add_row(a[1])
+        i+=1
+        #x.add_row(a[2])
+    print(x)
+    print("Families")
+        #print(lista)
+    while j< len(b):
+        listb=[b[j]['FAM'],b[j]['MARR'],b[j]['DIV'],b[j]['HUSB'],b[j]['HUSB_NAME'],b[j]['WIFE'],b[j]['WIFE_NAME'],b[j]['CHIL']];
+        y.add_row(listb)    #x.add_row(a[1])
+        j+=1
+        #x.add_row(a[2])
+    print(y)
+
+
     pass
 
 
 def main():
     result = parse_gedcom(validate_gedcom('my_test.ged'))
-    print(result[0])
-    print(result[1])
+    #print(result[1][0])
+    #print(len(result[0]))
+    #print(result[1])
+    pretty_table(result[0],result[1])
 
 
 if __name__ == '__main__':
