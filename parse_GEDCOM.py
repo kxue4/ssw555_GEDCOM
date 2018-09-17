@@ -184,9 +184,6 @@ def pretty_table(a,b):
     print(y)
 
 
-    pass
-
-
 def main():
     result = parse_gedcom(validate_gedcom('my_test.ged'))
     #print(result[1][0])
