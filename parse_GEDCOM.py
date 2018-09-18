@@ -8,9 +8,7 @@
 from prettytable import PrettyTable
 from datetime import datetime
 import re
-import sys
-#print_GEDCOM = sys.path.append('../')
-#import print_GEDCOM
+
 
 def validate_gedcom(file_name):
     """
@@ -156,39 +154,37 @@ def parse_gedcom(validated):
     return indi_list, fam_list
 
 
-def pretty_table(a,b):
+def pretty_table(a, b):
+    indi_table = PrettyTable(field_names=["ID", "Name", "Gender", "Birthday", "Age", "Alive","Death", "Child","Spouse"])
+    fam_table = PrettyTable(field_names=["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID",
+                                         "Wife Name", "Children"])
+    fam_table.align["name"] = "1"
+    fam_table.padding_width = 1
+    indi_table.align["name"] = "l"
+    indi_table.padding_width = 1
+    i = 0
+    j = 0
+
+    while i < len(a):
+        each_indi = [a[i]['INDI'], a[i]['NAME'], a[i]['SEX'], a[i]['BIRT'], a[i]['AGE'], a[i]['ALIVE'], a[i]['DEAT'],
+                     a[i]['CHIL'], a[i]['SPOUSE']]
+        indi_table.add_row(each_indi)  # x.add_row(a[1])
+        i += 1  # x.add_row(a[2])
+
+    while j < len(b):
+        each_fam = [b[j]['FAM'], b[j]['MARR'], b[j]['DIV'], b[j]['HUSB'], b[j]['HUSB_NAME'], b[j]['WIFE'],
+                    b[j]['WIFE_NAME'], b[j]['CHIL']]
+        fam_table.add_row(each_fam)  # x.add_row(a[1])
+        j += 1  # x.add_row(a[2])
+
     print("Individuals")
-    lista=[]
-    listb=[]
-    x = PrettyTable(field_names=["ID", "Name", "Gender", "Birthday","Age","Alive","Death","Child","Spouse"])
-    y = PrettyTable(field_names=["ID", "Married", "Divorced", "Husband ID","Husband Name","Wife ID","Wife Name","Children"])
-    y.align["name"] = "1"
-    y.padding_width = 1
-    x.align["name"] = "l"  # 以name字段左对齐
-    x.padding_width = 1   # 填充宽度
-    i=0
-    j=0
-    while i< len(a):
-        lista=[a[i]['INDI'],a[i]['NAME'],a[i]['SEX'],a[i]['BIRT'],a[i]['AGE'],a[i]['ALIVE'],a[i]['DEAT'],a[i]['CHIL'],a[i]['SPOUSE']];
-        x.add_row(lista)    #x.add_row(a[1])
-        i+=1
-        #x.add_row(a[2])
-    print(x)
+    print(indi_table)
     print("Families")
-        #print(lista)
-    while j< len(b):
-        listb=[b[j]['FAM'],b[j]['MARR'],b[j]['DIV'],b[j]['HUSB'],b[j]['HUSB_NAME'],b[j]['WIFE'],b[j]['WIFE_NAME'],b[j]['CHIL']];
-        y.add_row(listb)    #x.add_row(a[1])
-        j+=1
-        #x.add_row(a[2])
-    print(y)
+    print(fam_table)
 
 
 def main():
     result = parse_gedcom(validate_gedcom('my_test.ged'))
-    #print(result[1][0])
-    #print(len(result[0]))
-    #print(result[1])
     pretty_table(result[0],result[1])
 
 
