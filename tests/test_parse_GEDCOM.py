@@ -11,7 +11,7 @@ from parse_GEDCOM import validate_gedcom, parse_gedcom
 class TestParseGedcom(unittest.TestCase):
 
     def test_validate_gedcom(self):
-        self.assertEqual(validate_gedcom('test_parse_GEDCOM.ged'),
+        self.assertEqual(validate_gedcom('tests.test_parse_GEDCOM.ged'),
                          [('0', 'NOTE', 'Github repository name: ssw555_GEDCOM'), ('0', 'NOTE', 'define Kaiwen Xue'),
                           ('0', 'INDI', '@I1@'), ('1', 'NAME', 'Kaiwen /Xue/'), ('1', 'SEX', 'M'), ('1', 'BIRT', ''),
                           ('2', 'DATE', '15 AUG 1994')])
