@@ -5,6 +5,8 @@
 # @File    : test_parse_GEDCOM.py
 # @Software: PyCharm
 import unittest
+from prettytable import PrettyTable
+import re
 from parse_GEDCOM import validate_gedcom, parse_gedcom
 
 
