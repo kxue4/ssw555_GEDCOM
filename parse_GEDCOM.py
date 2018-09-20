@@ -8,6 +8,7 @@
 from prettytable import PrettyTable
 from datetime import datetime
 import re
+from UserStories import *
 
 
 def validate_gedcom(file_name):
@@ -184,8 +185,13 @@ def pretty_table(a, b):
 
 
 def main():
-    result = parse_gedcom(validate_gedcom('my_test.ged'))
-    pretty_table(result[0],result[1])
+    result = parse_gedcom(validate_gedcom('my_test.ged'))  # parse gedcom file
+
+    # User stories part
+    marr_before_div(result[1])  # US01
+
+    # If all user stories pass, print table.
+    pretty_table(result[0], result[1])
 
 
 if __name__ == '__main__':
