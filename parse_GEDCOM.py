@@ -188,7 +188,8 @@ def main():
     result = parse_gedcom(validate_gedcom('my_test.ged'))  # parse gedcom file
 
     # User stories part
-    marr_before_div(result[1])  # US01
+    birt_before_marr(result[0], result[1])  # US02
+    marr_before_div(result[1])  # US04
 
     # If all user stories pass, print table.
     pretty_table(result[0], result[1])
