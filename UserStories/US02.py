@@ -22,5 +22,3 @@ def birt_before_marr(indi_list, fam_list):
 
                 if marr <= birt:
                     raise Exception('Birth date must before marriage date')
-                else:
-                    print(birt, marr)
