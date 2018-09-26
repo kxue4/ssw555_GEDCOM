@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # # -*- coding: utf-8 -*-
 # @Time    : 9/24/18
-# @Author  : Zhiren Yang
+# @Author  : jiaxin wang
 # @File    : US23.py
 # @Software: PyCharm
 # No more than one individual with the same name and birth date should appear in a GEDCOM file

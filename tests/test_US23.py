@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 9/24/18
-# @Author  : Zhiren Yang
+# @Author  : jiaxin wang
 # @File    : test_US23.py
 # @Software: PyCharm
 
@@ -13,16 +13,16 @@ class TestUniqueNameAndBirth(unittest.TestCase):
 
     def test_unique_ids(self):
 
-        self.assertRaises(Exception, unique_name_and_birth, [{'NAME': 'Zhiren /Yang/', 'BIRT': '1993-12-26'},
-                                                             {'NAME': 'Zhiren /Yang/', 'BIRT': '1993-12-26'}])
+        self.assertRaises(Exception, unique_name_and_birth, [{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'},
+                                                             {'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'}])
 
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Zhiren /Yang/', 'BIRT': '2014-06-21'},
-                                                {'NAME': 'A /B/',         'BIRT': '1993-12-26'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Zhiren /Yang/', 'BIRT': '1993-12-26'},
-                                                {'NAME': 'Zhiren /Yang/', 'BIRT': '2014-06-21'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'A /B/',         'BIRT': '1993-12-26'},
-                                                {'NAME': 'Zhiren /Yang/', 'BIRT': '1993-12-26'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Zhiren /Yang/', 'BIRT': '2014-06-21'}]), None)
+        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'},
+                                                {'NAME': 'A /B/',         'BIRT': '1995-12-19'}]), None)
+        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'},
+                                                {'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]), None)
+        self.assertEqual(unique_name_and_birth([{'NAME': 'A /B/',         'BIRT': '1995-12-19'},
+                                                {'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'}]), None)
+        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]), None)
 
 
 if __name__ == '__main__':
