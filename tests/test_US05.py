@@ -5,7 +5,7 @@
 # @File    : test_US05.py
 # @Software: PyCharm
 import unittest
-from US05 import marr_before_deat
+from UserStories.US05 import marr_before_deat
 
 
 class TestMarrBeforeDeat(unittest.TestCase):
