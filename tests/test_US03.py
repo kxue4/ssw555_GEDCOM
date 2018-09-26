@@ -5,7 +5,7 @@
 # @File    : US03.py
 # @Software: PyCharm
 import unittest
-from US03 import birt_before_deat
+from UserStories.US03 import birt_before_deat
 
 
 class TestBirtBeforeDeat(unittest.TestCase):
