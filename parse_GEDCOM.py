@@ -9,7 +9,6 @@ from prettytable import PrettyTable
 from datetime import datetime
 import re
 from UserStories import *
-from jxus import *
 
 
 def validate_gedcom(file_name):
