@@ -10,4 +10,8 @@ from UserStories.US22 import unique_ids
 from UserStories.US23 import unique_name_and_birth
 from UserStories.US03 import birt_before_deat
 from UserStories.US05 import marr_before_deat
+<<<<<<< HEAD
 from UserStories.US11 import no_bigamy
+=======
+from UserStories.US13 import siblings_spacing
+>>>>>>> 64ebb2b66cdcb665abac5f3034eb2eb935a4e583
