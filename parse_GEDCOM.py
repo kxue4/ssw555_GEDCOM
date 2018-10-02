@@ -190,7 +190,7 @@ def main():
     # User stories part
     birt_before_marr(result[0], result[1])  # US02
     marr_before_div(result[1])  # US04
-    No_bigamy(result[0], result[1])
+    #No_bigamy(result[0], result[1])
     #print(result[0])
     #print(result[1])
     # If all user stories pass, print table.
