@@ -11,12 +11,12 @@ def no_bigamy (indilist,famlist):
     marr = []
     div = []
     for people in indilist:
-        print(people)
+        #print(people)
         if len(people['SPOUSE'])>=2 and people['SPOUSE']!='NONE':
             for spouse in people['SPOUSE']:
-                print(spouse)
+         #       print(spouse)
                 find_fam_index = int(spouse[2])-1
-                print(find_fam_index)
+          #      print(find_fam_index)
                 if famlist[find_fam_index]['DIV'] == 'NONE':
                     tem = int((datetime.now() - datetime.strptime(famlist[find_fam_index]['MARR'], '%Y-%m-%d')).days)
                     marr.append(tem)
@@ -30,7 +30,7 @@ def no_bigamy (indilist,famlist):
                     div.append( tem2)
                     #print(div)
 
-    if marr[0]>div[1] or marr[1]>div[0]:
+    if (marr[0]>div[1] and marr[0]<marr[1]) or (marr[1]>div[0] and marr[1]<marr[0]):
         raise Exception('biomarry')
 
 #no_bigamy(indilist,famlist)
