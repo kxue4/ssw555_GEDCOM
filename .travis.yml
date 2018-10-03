@@ -9,3 +9,11 @@ install:
 # command to run tests
 script:
  - python -m unittest tests.test_parse_GEDCOM
+ - python -m unittest tests.test_US02
+ - python -m unittest tests.test_US04
+ - python -m unittest tests.test_US22
+ - python -m unittest tests.test_US23
+ - python -m unittest tests.test_US03
+ - python -m unittest tests.test_US05
+ - python -m unittest tests.test_US11
+ - python -m unittest tests.test_US13
