@@ -12,13 +12,19 @@ from UserStories.US22 import unique_ids
 class TestUniqueIds(unittest.TestCase):
 
     def test_unique_ids(self):
-        self.assertRaises(Exception, unique_ids, [{'INDI': '@I1@'}, {'INDI': '@I1@'}], [{'FAM':'@F1@'}, {'FAM': '@F2@'}])
-        self.assertRaises(Exception, unique_ids, [{'INDI': '@I1@'}, {'INDI': '@I2@'}], [{'FAM':'@F1@'}, {'FAM': '@F1@'}])
-        self.assertRaises(Exception, unique_ids, [{'INDI': '@I1@'}, {'FAM': '@I1@'}])
-        self.assertRaises(Exception, unique_ids, [], [{'FAM':'@F1@'}, {'FAM':'@F1@'}])
-        self.assertRaises(Exception, unique_ids, [{'INDI': '@I1@'}, {'INDI': '@I1@'}], [])
-        self.assertEqual(unique_ids([{'INDI': '@I1@'}, {'INDI': '@I2@'}], [{'FAM':'@F1@'}, {'FAM': '@F2@'}]), None)
 
+        self.assertEqual(unique_ids([{'INDI': '@I1@', 'num': 3}, {'INDI': '@I2@', 'num':5}],
+                                    [{'FAM':'@F1@', 'num': 3}, {'FAM': '@F2@', 'num': 32}]), True)
+        self.assertEqual(unique_ids([{'INDI': '@I2@', 'num': 3}, {'INDI': '@I2@', 'num': 5}],
+                                    [{'FAM': '@F1@', 'num': 3}, {'FAM': '@F2@', 'num': 32}]), False)
+        self.assertEqual(unique_ids([{'INDI': '@I1@', 'num': 3}, {'INDI': '@I2@', 'num': 5}],
+                                    [{'FAM': '@F1@', 'num': 3}, {'FAM': '@F1@', 'num': 32}]), False)
+        self.assertEqual(unique_ids([{'INDI': '@I2@', 'num': 3}, {'INDI': '@I2@', 'num': 5}],
+                                    [{'FAM': '@F2@', 'num': 3}, {'FAM': '@F2@', 'num': 32}]), False)
+        self.assertEqual(unique_ids([{'INDI': '@I1@', 'num': 3}, {'INDI': '@I2@', 'num': 5}],
+                                    [{'FAM': '@F2@', 'num': 3}, {'FAM': '@F2@', 'num': 32}]), False)
+
+#
 
 if __name__ == '__main__':
     unittest.main()
