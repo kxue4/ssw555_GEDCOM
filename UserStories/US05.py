@@ -13,7 +13,7 @@ def marr_before_deat(indi_list, fam_list):
 
     for people in indi_list:
 
-        if people['SPOUSE'] != 'NONE' and people['DEAT'] != 'NONE':
+        if people['SPOUSE'] != 'NONE' and people['DEAT'] != 'NA':
             deat = datetime.strptime(people['DEAT'], '%Y-%m-%d')
 
             for spouses in people['SPOUSE']:
