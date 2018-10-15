@@ -17,4 +17,7 @@ def birt_before_deat(indi_list):
             deat = datetime.strptime(people['DEAT'], '%Y-%m-%d')
 
             if birt > deat:
-                raise Exception('Birth date must before death date!')
+                print("ERROR: INDIVIDUAL: US03: {}: {}: death {} before birth {}".format(people['num']+4, people['INDI'],deat, birt))
+                return False
+
+    return True
