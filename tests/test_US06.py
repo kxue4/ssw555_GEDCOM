@@ -5,7 +5,7 @@
 # @File    : test_US06.py.py
 # @Software: PyCharm
 import unittest
-from US06 import div_before_deat
+from UserStories.US06 import div_before_deat
 
 
 class TestDivBeforeDeat(unittest.TestCase):
