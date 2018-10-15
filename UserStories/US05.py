@@ -21,4 +21,7 @@ def marr_before_deat(indi_list, fam_list):
                 marr = datetime.strptime(fam_list[find_fam_index]['MARR'], '%Y-%m-%d')
 
                 if marr > deat:
-                    raise Exception(' Marriage date must before death date')
+                    print("ERROR: INDIVIDUAL: US05: {}: {}: death {} before marriage {}".format(people['num'] + 6,people['INDI'], deat, marr))
+                    return False
+
+    return True
