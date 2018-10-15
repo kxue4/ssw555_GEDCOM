@@ -5,7 +5,7 @@
 # @File    : test_US08.py
 # @Software: PyCharm
 import unittest
-from US08 import birth_before_parents_marriage
+from UserStories.US08 import birth_before_parents_marriage
 
 
 class TestBirthBeforeParentsMarriage(unittest.TestCase):
