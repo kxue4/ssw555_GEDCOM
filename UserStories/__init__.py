@@ -14,3 +14,6 @@ from UserStories.US03 import birt_before_deat
 from UserStories.US05 import marr_before_deat
 from UserStories.US11 import no_bigamy
 from UserStories.US13 import siblings_spacing
+from UserStories.US14 import multiple_births_less_5
+from UserStories.US15 import fewer_than_15_siblings
+
