@@ -6,10 +6,13 @@
 # @Software: PyCharm
 # Birth before marriage
 from datetime import datetime
+from error_handler import error_handler
 import re
 
 
 def birt_before_marr(indi_list, fam_list):
+    indi_id = []
+    line_num = []
 
     for people in indi_list:
 
@@ -21,4 +24,10 @@ def birt_before_marr(indi_list, fam_list):
                 marr = datetime.strptime(fam_list[find_fam_index]['MARR'], '%Y-%m-%d')
 
                 if marr <= birt:
-                    raise Exception('Birth date must before marriage date')
+                    line_num.append(error_handler(people['INDI']))
+                    indi_id.append(people['INDI'])
+
+    if line_num:
+        print('ERROR: INDIVIDUAL: US02: lines_num:', sorted(set(line_num)), ': indi_id:', sorted(set(indi_id)),
+              ': Birth date must before marriage date')
+        return 'BUG'

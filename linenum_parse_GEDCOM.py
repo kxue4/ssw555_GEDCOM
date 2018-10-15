@@ -212,18 +212,14 @@ def pretty_table(a, b):
 
 
 def main():
-    result = parse_gedcom(validate_gedcom('my_test.ged'))  # parse gedcom file
+    result = parse_gedcom(validate_gedcom('my_test1.ged'))  # parse gedcom file
+    pretty_table(result[0], result[1])
 
     # User stories part
     birt_before_marr(result[0], result[1])  # US02
     marr_before_div(result[1])  # US04
-    # If all user stories pass, print table.
-    pretty_table(result[0], result[1])
-
-    # print(result[0])
-    # print(result[1])
-    unique_ids(result[0], result[1])
-    siblings_spacing(result[0])
+    siblings_spacing(result[0])  # US13
+    unique_ids(result[0], result[1])  # US22
 
 
 if __name__ == '__main__':
