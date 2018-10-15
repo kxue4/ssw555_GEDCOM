@@ -226,6 +226,8 @@ def main():
     birth_before_parents_marriage(result[0], result[1])  # US08
     siblings_spacing(result[0])  # US13
     unique_ids(result[0], result[1])  # US22
+    multiple_births_less_5(result[0],result[1])  # US14
+    fewer_than_15_siblings(result[1])   # US15
 
 
 if __name__ == '__main__':
