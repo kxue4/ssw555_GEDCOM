@@ -218,8 +218,12 @@ def main():
     # User stories part
     dates_before_current(result[0], result[1])  # US01
     birt_before_marr(result[0], result[1])  # US02
+    birt_before_deat(result[0])  # US03
     marr_before_div(result[1])  # US04
+    marr_before_deat(result[0], result[1])  # US05
+    div_before_deat(result[0], result[1])  # US06
     less_than_150(result[0])  # US07
+    birth_before_parents_marriage(result[0], result[1])  # US08
     siblings_spacing(result[0])  # US13
     unique_ids(result[0], result[1])  # US22
 
