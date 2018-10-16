@@ -10,6 +10,8 @@ from datetime import datetime
 def no_bigamy (indilist,famlist):
     marr = []
     div = []
+    wrongfam = []
+    tre =True
     for people in indilist:
         #print(people)
         if len(people['SPOUSE'])>=2 and people['SPOUSE']!='NONE':
@@ -25,12 +27,17 @@ def no_bigamy (indilist,famlist):
                     tem = int((datetime.now() - datetime.strptime(famlist[find_fam_index]['MARR'], '%Y-%m-%d')).days)
                     tem2 = int((datetime.now() - datetime.strptime(famlist[find_fam_index]['DIV'],'%Y-%m-%d')).days)
                     #print(tem)
+                    wrongfam.append(famlist[find_fam_index])
                     marr.append( tem)
                     #print(marr)
                     div.append( tem2)
                     #print(div)
 
     if (marr[0]>div[1] and marr[0]<marr[1]) or (marr[1]>div[0] and marr[1]<marr[0]):
-        raise Exception('biomarry')
+        #raise Exception('biomarry')
+        print("ERROR: INDIVIDUAL: US11: lines_num:{}: fam_id:{}: {}".format(wrongfam[0]['num'], wrongfam[0]['FAM'], \
+                                                                             'Birth dates of siblings should be more than 8 months apart or less than 2 days apart'))
+        tre =False
 
+    return tre
 #no_bigamy(indilist,famlist)
