@@ -230,7 +230,6 @@ def main():
     fewer_than_15_siblings(result[1])   # US15
     no_bigamy(result[0],result[1]) #US11
     unique_name_and_birth(result[0]) #US23
-    
 
 
 if __name__ == '__main__':
