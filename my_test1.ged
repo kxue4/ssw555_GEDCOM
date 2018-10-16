@@ -193,7 +193,7 @@
 0 NOTE define familiy @F1@
 0 @F1@ FAM
 1 HUSB @I1@
-1 WIFE @I9@
+1 WIFE @I1@
 1 CHIL @I1@
 1 MARR
 2 DATE 12 SEP 1990
@@ -223,8 +223,8 @@
 2 DATE 12 NOV 1988
 0 NOTE define familiy @F5@
 0 @F5@ FAM
-1 HUSB @I7@
-1 WIFE @I10@
+1 HUSB @I1@
+1 WIFE @I11@
 1 CHIL @I11@
 1 CHIL @I12@
 1 CHIL @I13@

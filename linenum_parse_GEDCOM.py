@@ -214,7 +214,7 @@ def pretty_table(a, b):
 def main():
     result = parse_gedcom(validate_gedcom('my_test1.ged'))  # parse gedcom file
     pretty_table(result[0], result[1])
-
+    #print(result[0])
     # User stories part
     dates_before_current(result[0], result[1])  # US01
     birt_before_marr(result[0], result[1])  # US02
@@ -230,7 +230,7 @@ def main():
     fewer_than_15_siblings(result[1])   # US15
     no_bigamy(result[0], result[1]) #US11
     unique_name_and_birth(result[0]) #US23
-    first_cousin(result[0],result[1]) #US19
+    first_cousin(result[0], result[1]) #US19
     aunt_uncle(result[0],result[1])  #US20
 
 

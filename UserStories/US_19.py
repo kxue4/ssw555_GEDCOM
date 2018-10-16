@@ -40,14 +40,18 @@
 
 cousin = []
 wronglist = []
-def first_cousin(indilist,famlist):
+
+
+def first_cousin(indilist, famlist):
     tre = True
+    #print(indilist)
     for fam in famlist:
         if len(fam['CHIL']) >= 2 and fam['CHIL'] != 'NONE':
             for chil in fam['CHIL']:
                 find_people_index = int(chil[2])-1
                 if indilist[find_people_index]['CHIL'] != 'NONE':
                     tem = indilist[find_people_index]['CHIL']
+                    #print(indilist[find_people_index])
                     #print(tem)
                     tmp=tem[0]
                     #print(tmp)
