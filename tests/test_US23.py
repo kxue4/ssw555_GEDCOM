@@ -13,17 +13,13 @@ class TestUniqueNameAndBirth(unittest.TestCase):
 
     def test_unique_ids(self):
 
-        self.assertRaises(Exception, unique_name_and_birth, [{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'},
-                                                             {'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'}])
+        self.assertFalse(unique_name_and_birth([{'INDI':'@I3@', 'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19','num':13},{'INDI':'@I4@','NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19','num':14}]))
 
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'},
-                                                {'NAME': 'A /B/',         'BIRT': '1995-12-19'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'},
-                                                {'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'A /B/',         'BIRT': '1995-12-19'},
-                                                {'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'}]), None)
-        self.assertEqual(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]), None)
+        self.assertTrue(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'},{'NAME': 'A /B/',         'BIRT': '1995-12-19'}]))
+        self.assertTrue(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'},{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]))
+        self.assertTrue(unique_name_and_birth([{'NAME': 'A /B/',         'BIRT': '1995-12-19'},{'NAME': 'Jiaxin /Wang/', 'BIRT': '1995-12-19'}]))
+        self.assertTrue(unique_name_and_birth([{'NAME': 'Jiaxin /Wang/', 'BIRT': '2014-06-21'}]))
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(exit=False, verbosity=1)

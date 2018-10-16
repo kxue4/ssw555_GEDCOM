@@ -12,7 +12,7 @@ def birt_before_deat(indi_list):
 
     for people in indi_list:
 
-        if people['DEAT'] != 'NONE':
+        if people['DEAT'] != 'NA':
             birt = datetime.strptime(people['BIRT'], '%Y-%m-%d')
             deat = datetime.strptime(people['DEAT'], '%Y-%m-%d')
 

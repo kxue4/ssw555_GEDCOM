@@ -11,15 +11,15 @@ from UserStories.US11 import no_bigamy
 class TestNoBigamy(unittest.TestCase):
 
     def test_no_bigamy(self):
-        self.assertRaises(Exception, no_bigamy, [{'SPOUSE': ['@F1@', '@F2@']}],
-                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1994-08-15','DIV':'1997-08-15'}])
-        self.assertRaises(Exception, no_bigamy, [{'SPOUSE': ['@F1@', '@F2@']}],
-                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1994-08-16','DIV':'1997-08-15'}])
-        self.assertRaises(Exception, no_bigamy, [{'SPOUSE': ['@F1@', '@F2@']}],
-                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1994-08-17','DIV':'1997-08-15'}])
-        self.assertEqual(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}], [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1996-08-16','DIV':'1997-08-15'}]), None)
-        self.assertEqual(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}], [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1996-08-15','DIV':'1997-08-15'}]), None)
+        self.assertFalse( no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}],
+                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15','num':13},{'FAM':'@F2@','MARR': '1994-08-15','DIV':'1997-08-15','num':14}]))
+        self.assertFalse(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}],
+                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15','num':13},{'FAM':'@F2@','MARR': '1994-08-16','DIV':'1997-08-15','num':14}]))
+        self.assertFalse(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}],
+                          [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15','num':13},{'FAM':'@F2@','MARR': '1994-08-17','DIV':'1997-08-15','num':14}]))
+        self.assertTrue(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}], [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1996-08-16','DIV':'1997-08-15'}]))
+        self.assertTrue(no_bigamy([{'SPOUSE': ['@F1@', '@F2@']}], [{'FAM':'@F1@','MARR': '1993-08-15','DIV':'1995-08-15'},{'FAM':'@F2@','MARR': '1996-08-15','DIV':'1997-08-15'}]))
 
 
 if __name__ == '__main__':
-    unittest.main(exit=False, verbosity=2)
+    unittest.main(exit=False, verbosity=3)
