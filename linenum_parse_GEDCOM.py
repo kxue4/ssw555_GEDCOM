@@ -216,10 +216,21 @@ def main():
     pretty_table(result[0], result[1])
 
     # User stories part
+    dates_before_current(result[0], result[1])  # US01
     birt_before_marr(result[0], result[1])  # US02
+    birt_before_deat(result[0])  # US03
     marr_before_div(result[1])  # US04
+    marr_before_deat(result[0], result[1])  # US05
+    div_before_deat(result[0], result[1])  # US06
+    less_than_150(result[0])  # US07
+    birth_before_parents_marriage(result[0], result[1])  # US08
     siblings_spacing(result[0])  # US13
     unique_ids(result[0], result[1])  # US22
+    multiple_births_less_5(result[0],result[1])  # US14
+    fewer_than_15_siblings(result[1])   # US15
+    no_bigamy(result[0],result[1]) #US11
+    unique_name_and_birth(result[0]) #US23
+    
 
 
 if __name__ == '__main__':
