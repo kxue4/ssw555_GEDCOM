@@ -212,9 +212,9 @@ def pretty_table(a, b):
 
 
 def main():
-    result = parse_gedcom(validate_gedcom('my_test1.ged'))  # parse gedcom file
+    result = parse_gedcom(validate_gedcom('my_test1.ged'))  # parse GEDCOM file
     pretty_table(result[0], result[1])
-    #print(result[0])
+
     # User stories part
     dates_before_current(result[0], result[1])  # US01
     birt_before_marr(result[0], result[1])  # US02
