@@ -37,6 +37,7 @@ def no_bigamy (indilist,famlist):
         #raise Exception('biomarry')
         print("ERROR: FAMILY: US11: lines_num:{}: fam_id:{}: {}".format(wrongfam[0]['num'], wrongfam[0]['FAM'], \
                                                                              'Marriage should not occur during marriage to another spouse'))
+        #print(wrongfam[0])
         tre =False
 
     return tre
