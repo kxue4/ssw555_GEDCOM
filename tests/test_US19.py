@@ -5,7 +5,7 @@
 # @File    : test_US19.py
 # @Software: PyCharm
 import unittest
-from UserStories.US_19 import first_cousin
+from UserStories.US19 import first_cousin
 
 indilist = [{'INDI': '@I1@',  'SPOUSE': 'NONE',   'num': 3,   'CHIL': 'NONE'},
             {'INDI': '@I2@',  'SPOUSE': ['@F1@'], 'num': 10,  'CHIL': ['@I1@']},

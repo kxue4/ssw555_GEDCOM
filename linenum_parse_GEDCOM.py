@@ -224,16 +224,14 @@ def main():
     div_before_deat(result[0], result[1])  # US06
     less_than_150(result[0])  # US07
     birth_before_parents_marriage(result[0], result[1])  # US08
-    no_bigamy(result[0],result[1]) # US11
+    no_bigamy(result[0],result[1])  # US11
     siblings_spacing(result[0])  # US13
-    unique_ids(result[0], result[1])  # US22
     multiple_births_less_5(result[0], result[1])  # US14
     fewer_than_15_siblings(result[1])   # US15
-    no_bigamy(result[0], result[1]) #US11
-    unique_name_and_birth(result[0]) #US23
-    first_cousin(result[0], result[1]) #US19
-    aunt_uncle(result[0],result[1])  #US20
-
+    first_cousin(result[0], result[1])  # US19
+    aunt_uncle(result[0],result[1])  # US20
+    unique_ids(result[0], result[1])  # US22
+    unique_name_and_birth(result[0])  # US23
 
 
 if __name__ == '__main__':
