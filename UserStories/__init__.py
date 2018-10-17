@@ -16,5 +16,7 @@ from UserStories.US11 import no_bigamy
 from UserStories.US13 import siblings_spacing
 from UserStories.US14 import multiple_births_less_5
 from UserStories.US15 import fewer_than_15_siblings
+from UserStories.US_19 import first_cousin
+from UserStories.US20 import aunt_uncle
 from UserStories.US22 import unique_ids
 from UserStories.US23 import unique_name_and_birth

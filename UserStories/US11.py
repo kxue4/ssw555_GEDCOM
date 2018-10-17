@@ -32,11 +32,11 @@ def no_bigamy (indilist,famlist):
                     #print(marr)
                     div.append( tem2)
                     #print(div)
-
-    if (marr[0]>div[1] and marr[0]<marr[1]) or (marr[1]>div[0] and marr[1]<marr[0]):
+    if (marr[0] > div[1]) or (marr[1] > div[0] and marr[1] < marr[0]):
+    # if (marr[0]>div[1] and marr[0]<marr[1]) or (marr[1]>div[0] and marr[1]<marr[0]):
         #raise Exception('biomarry')
-        print("ERROR: INDIVIDUAL: US11: lines_num:{}: fam_id:{}: {}".format(wrongfam[0]['num'], wrongfam[0]['FAM'], \
-                                                                             'Birth dates of siblings should be more than 8 months apart or less than 2 days apart'))
+        print("ERROR: FAMILY: US11: lines_num:{}: fam_id:{}: {}".format(wrongfam[0]['num'], wrongfam[0]['FAM'], \
+                                                                             'Marriage should not occur during marriage to another spouse'))
         tre =False
 
     return tre
