@@ -20,3 +20,5 @@ from UserStories.US19 import first_cousin
 from UserStories.US20 import aunt_uncle
 from UserStories.US22 import unique_ids
 from UserStories.US23 import unique_name_and_birth
+from UserStories.US30 import list_living_married
+from UserStories.US31 import list_living_single
