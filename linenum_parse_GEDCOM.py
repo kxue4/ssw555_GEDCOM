@@ -232,6 +232,8 @@ def main():
     aunt_uncle(result[0],result[1])  # US20
     unique_ids(result[0], result[1])  # US22
     unique_name_and_birth(result[0])  # US23
+    list_living_married(result[0])                  # US 30
+    list_living_single(result[0])                   # US 31
 
 
 if __name__ == '__main__':
