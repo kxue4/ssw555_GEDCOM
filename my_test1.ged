@@ -192,7 +192,7 @@
 1 FAMC @F5@
 0 NOTE define familiy @F1@
 0 @F1@ FAM
-1 HUSB @I4@
+1 HUSB @I5@
 1 WIFE @I1@
 1 CHIL @I1@
 1 MARR
