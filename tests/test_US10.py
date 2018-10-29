@@ -5,7 +5,7 @@
 # @File    : test_US10.py
 # @Software: PyCharm
 import unittest
-from US10 import marriage_after_14
+from  UserStories.US10 import marriage_after_14
 
 
 class TestMarriageAfter14(unittest.TestCase):
