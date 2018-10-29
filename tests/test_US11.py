@@ -46,4 +46,8 @@ class TestNoBigamy(unittest.TestCase):
 
 if __name__ == '__main__':
 
+<<<<<<< HEAD
     unittest.main(exit=False, verbosity=3)
+=======
+    unittest.main(exit=False, verbosity=3)
+>>>>>>> 479839e214947497801ab5c70c5b0f2f102130c5
