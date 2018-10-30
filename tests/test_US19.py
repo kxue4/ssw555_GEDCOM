@@ -49,11 +49,11 @@ famlist_fault = [{'FAM': '@F1@', 'HUSB': '@I2@', 'WIFE': '@I3@', 'CHIL': ['@I1@'
 class Testfirst_cousin(unittest.TestCase):
 
     def test_aunt_uncle(self):
-        self.assertTrue(first_cousin(indilist,famlist_correct))
         self.assertTrue(first_cousin(indilist, famlist_correct))
-        self.assertFalse(first_cousin(indilist,famlist_fault))
-        self.assertFalse(first_cousin(indilist,famlist_fault))
-        self.assertFalse(first_cousin(indilist,famlist_fault))
+        self.assertTrue(first_cousin(indilist, famlist_correct))
+        self.assertFalse(first_cousin(indilist, famlist_fault))
+        self.assertFalse(first_cousin(indilist, famlist_fault))
+        self.assertFalse(first_cousin(indilist, famlist_fault))
 
 
 if __name__ == '__main__':

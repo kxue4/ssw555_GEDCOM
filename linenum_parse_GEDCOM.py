@@ -236,7 +236,8 @@ def main():
     list_living_single(result[0])                   # US 31
     birth_before_parents_death(result[0], result[1])  # US09
     marriage_after_14(result[0], result[1]) # US10
-
+    Unique_fam(result[1])  #US24
+    Corresponding_entires(result[0], result[1])  #US26
 
 if __name__ == '__main__':
     main()
