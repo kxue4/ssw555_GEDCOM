@@ -24,3 +24,6 @@ from UserStories.US24 import Unique_fam
 from UserStories.US26 import Corresponding_entires
 from UserStories.US30 import list_living_married
 from UserStories.US31 import list_living_single
+from UserStories.US09 import birth_before_parents_death
+from UserStories.US10 import marriage_after_14
+from UserStories.US21 import correct_gender_role

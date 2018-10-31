@@ -216,28 +216,31 @@ def main():
     pretty_table(result[0], result[1])
 
     # User stories part
-    dates_before_current(result[0], result[1])  # US01
-    birt_before_marr(result[0], result[1])  # US02
-    birt_before_deat(result[0])  # US03
-    marr_before_div(result[1])  # US04
-    marr_before_deat(result[0], result[1])  # US05
-    div_before_deat(result[0], result[1])  # US06
-    less_than_150(result[0])  # US07
-    birth_before_parents_marriage(result[0], result[1])  # US08
-    no_bigamy(result[0],result[1])  # US11
-    siblings_spacing(result[0])  # US13
-    multiple_births_less_5(result[0], result[1])  # US14
-    fewer_than_15_siblings(result[1])   # US15
-    first_cousin(result[0], result[1])  # US19
-    aunt_uncle(result[0],result[1])  # US20
-    unique_ids(result[0], result[1])  # US22
-    unique_name_and_birth(result[0])  # US23
+    # dates_before_current(result[0], result[1])  # US01
+    # birt_before_marr(result[0], result[1])  # US02
+    # birt_before_deat(result[0])  # US03
+    # marr_before_div(result[1])  # US04
+    # marr_before_deat(result[0], result[1])  # US05
+    # div_before_deat(result[0], result[1])  # US06
+    # less_than_150(result[0])  # US07
+    # birth_before_parents_marriage(result[0], result[1])  # US08
+    # no_bigamy(result[0],result[1])  # US11
+    # siblings_spacing(result[0])  # US13
+    # multiple_births_less_5(result[0], result[1])  # US14
+    # fewer_than_15_siblings(result[1])   # US15
+    # first_cousin(result[0], result[1])  # US19
+    # aunt_uncle(result[0],result[1])  # US20
+    # unique_ids(result[0], result[1])  # US22
+    # unique_name_and_birth(result[0])  # US23
     list_living_married(result[0])                  # US 30
     list_living_single(result[0])                   # US 31
     birth_before_parents_death(result[0], result[1])  # US09
     marriage_after_14(result[0], result[1]) # US10
     Unique_fam(result[1])  #US24
     Corresponding_entires(result[0], result[1])  #US26
+    correct_gender_role(result[0], result[1])  # US21
+    unique_first_name(result[0], result[1])
+
 
 if __name__ == '__main__':
     main()
