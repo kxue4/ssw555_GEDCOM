@@ -67,7 +67,8 @@ def multiple_births_less_5(indi_list, fam_list):
                     birth_days.append(days(i))
             # whether all the children are born in a same day
             assert birth_days != []
-            if max(birth_days) <= 2:
+#             if max(birth_days) <= 2:
+            if birth_days.count(0)>4:
                 print("ERROR: FAMILY: US14: lines_num:{}: fam_id:{}: {}".format(f['num'], f['FAM'],
                       'No more than FIVE siblings should be born at the SMAE time'))
                 rst = False
