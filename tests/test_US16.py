@@ -5,7 +5,7 @@
 # @File    : test_US16.py
 # @Software: PyCharm
 import unittest
-from US16 import male_last_names
+from UserStories.US16 import male_last_names
 
 
 class TestMaleLastNAme(unittest.TestCase):
