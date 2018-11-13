@@ -242,5 +242,7 @@ def main():
     #unique_first_name(result[0], result[1])
     recent_birth(result[0]) #US35
     recent_death(result[0]) #US36
+    no_marriages_to_des(result[1])                  # US 17
+    sibs_should_not_marry(result[1])                # US 18
 if __name__ == '__main__':
     main()
