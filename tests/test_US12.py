@@ -5,7 +5,7 @@
 # @File    : test_US12.py
 # @Software: PyCharm
 import unittest
-from US12 import parents_not_too_old
+from UserStories.US12 import parents_not_too_old
 
 
 class TestParentsNotTooOld(unittest.TestCase):
