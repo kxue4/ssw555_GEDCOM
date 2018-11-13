@@ -29,3 +29,5 @@ from UserStories.US30 import list_living_married
 from UserStories.US31 import list_living_single
 from UserStories.US35 import recent_birth
 from UserStories.US36 import recent_death
+from UserStories.US17 import no_marriages_to_des
+from UserStories.US18 import sibs_should_not_marry
