@@ -244,5 +244,8 @@ def main():
     recent_death(result[0]) #US36
     no_marriages_to_des(result[1])                  # US 17
     sibs_should_not_marry(result[1])                # US 18
+    parents_not_too_old(result[0], result[1])   # US 12
+    male_last_names(result[0], result[1])   # US 16
+    
 if __name__ == '__main__':
     main()
