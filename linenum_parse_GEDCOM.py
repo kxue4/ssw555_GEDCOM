@@ -239,7 +239,7 @@ def main():
     Unique_fam(result[1])  #US24
     Corresponding_entires(result[0], result[1])  #US26
     correct_gender_role(result[0], result[1])  # US21
-    unique_first_name(result[0], result[1])
+    #unique_first_name(result[0], result[1])
     recent_birth(result[0]) #US35
     recent_death(result[0]) #US36
 if __name__ == '__main__':
