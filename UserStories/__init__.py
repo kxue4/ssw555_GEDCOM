@@ -15,9 +15,11 @@ from UserStories.US08 import birth_before_parents_marriage
 from UserStories.US09 import birth_before_parents_death
 from UserStories.US10 import marriage_after_14
 from UserStories.US11 import no_bigamy
+from UserStories.US12 import parents_not_too_old
 from UserStories.US13 import siblings_spacing
 from UserStories.US14 import multiple_births_less_5
 from UserStories.US15 import fewer_than_15_siblings
+from UserStories.US16 import male_last_names
 from UserStories.US19 import first_cousin
 from UserStories.US20 import aunt_uncle
 from UserStories.US21 import correct_gender_role
@@ -25,6 +27,7 @@ from UserStories.US22 import unique_ids
 from UserStories.US23 import unique_name_and_birth
 from UserStories.US24 import Unique_fam
 from UserStories.US26 import Corresponding_entires
+from UserStories.US29 import list_deceased
 from UserStories.US30 import list_living_married
 from UserStories.US31 import list_living_single
 from UserStories.US35 import recent_birth

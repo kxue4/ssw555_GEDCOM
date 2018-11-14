@@ -12,4 +12,4 @@ def list_living_married(init_list):
     for i in init_list:
         if i['ALIVE'] == 'True' and i['SPOUSE'] != 'NONE':
             lm.append(i['INDI'] + '_lineNum:'+ str(i['num']))
-    print("INFO : " + "US30: All living married people in a GEDCOM file are: " + str(lm))
+    print("INFO: " + "US30: All living married people in a GEDCOM file are: " + str(lm))

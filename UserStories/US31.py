@@ -12,4 +12,4 @@ def list_living_single(indi_list):
     for i in indi_list:
         if i['AGE'] > 30 and i['SPOUSE'] == 'NONE':
             ls.append(i['INDI'] + '_lineNum:' + str(i['num']))
-    print("INFO : " + "US31: All living people over 30 who have never been married are: " + str(ls))
+    print("INFO: " + "US31: All living people over 30 who have never been married are: " + str(ls))
